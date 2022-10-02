@@ -1,0 +1,51 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+from string import ascii_letters
+from collections import defaultdict
+# Complete the isValid function below.
+def isValid(s):
+    count =False
+    temp =0
+    word_count = defaultdict(int)
+   
+    for i in s:
+        word_count[i]+=1
+    first=word_count[s[0]]
+    print(first,word_count)
+    for value in word_count.values():
+        if value==first:
+            first=value
+            continue
+        else:
+            if abs(value-1)==first or abs(value-1)==0 and count==False:
+                count = True
+            else:
+                return "NO"
+    return "YES"
+        
+
+
+
+        
+        
+        
+
+
+
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = isValid(s)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
